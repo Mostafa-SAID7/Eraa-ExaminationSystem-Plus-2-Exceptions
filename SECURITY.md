@@ -1,61 +1,48 @@
-# 🔐 Security Policy
+# Security Policy
 
 ## Supported Versions
 
-This project is a demonstration console application for educational purposes. However, if adapted for production or educational environments, security should be taken seriously.
+The following table lists the versions of the Examination System project that are currently supported with security updates:
 
 | Version | Supported |
 |---------|-----------|
-| 1.0     | ✅        |
+| 2.x     | ✅ Yes     |
+| 1.x     | ❌ No      |
 
 ---
 
-## 🔎 Reporting a Vulnerability
+## Reporting a Vulnerability
 
-If you discover a security vulnerability in this project:
+If you discover a security vulnerability in this project, please **do not create a public issue**.
 
-1. **Do not publicly disclose the issue**.
-2. Please email the maintainer or project lead directly at: `m.ssaid356@gmail.com`
-3. Provide:
-   - Description of the issue
-   - Steps to reproduce
-   - Potential impact
-   - Suggestions for a fix (if known)
+Instead, please contact the author directly:
 
-We will aim to respond within **48 hours**.
+- **GitHub**: [@Mostafa-SAID7](https://github.com/Mostafa-SAID7)
+
+We will respond as quickly as possible and coordinate with you to release a fix.
 
 ---
 
-## 🛡️ Security Considerations
+## Security Improvements in Latest Release
 
-This project is a **console application** and not exposed to external users over a network. However, the following points should still be reviewed if extended:
+As of version `v2.0`, the following changes were made to improve security and data integrity:
 
-- 🔐 **Input Validation**:
-  - Ensure all user inputs (e.g., answers, number of questions) are validated to avoid exceptions or logic bypass.
-
-- 📁 **File Handling**:
-  - Ensure log files and saved data are stored in **secure, write-permitted paths only**.
-  - Do not expose sensitive logs to unauthorized users.
-
-- 🧾 **Sensitive Data**:
-  - Avoid writing student identities or exam results in plain text for production.
-  - Mask or encrypt sensitive data in future iterations.
-
-- 👥 **Authentication/Authorization**:
-  - If this is expanded to a multi-user environment, implement role-based access (e.g., students vs. teachers).
+- ✅ Validation for question types and formats.
+- ✅ Time input (exam duration) now strictly validated using `TimeSpan.TryParse`.
+- ✅ Duplicate MCQ options are no longer allowed to prevent ambiguity.
+- ✅ Clean user input handling for marks and headers to avoid runtime exceptions.
+- ✅ All emoji and decorative console elements removed to reduce parsing risks in CI/CD environments.
 
 ---
 
-## 🔄 Future Improvements
+## Recommendations for Users
 
-- Add support for user authentication
-- Enforce logging with timestamps
-- Limit maximum attempts per student
-- Support secure storage for questions and answers (e.g., JSON with checksum or encryption)
+- Always run the app in a secure terminal.
+- Validate any future enhancements with unit testing.
+- Ensure your .NET runtime is updated (minimum .NET 9 supported).
 
 ---
 
-## 📢 Disclaimer
+## License
 
-This application is built primarily for learning and academic demonstration. Do not use it in production without proper review and security enhancements.
-
+This project is licensed under the **MIT License**.

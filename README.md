@@ -1,6 +1,6 @@
 # 📝 Console Exam System (C# .NET 9)
 <div style="display: flex; justify-content: space-between; align-items: center;">
-  <h1 style="margin: 0;">Eraa-StudentManagementSystem</h1>
+ 
   <p align="center">
  <a href="https://drive.google.com/file/d/1nDRjhbqct12RlGyURuJaomuu0FQKosYx/view?usp=sharing" target="_blank" rel="noopener noreferrer">
     <img src="https://img.shields.io/badge/PDF-View%20Struct%20vs%20Class%20vs%20Record-D44638?style=flat&logo=adobe&logoColor=white" alt="View PDF" />

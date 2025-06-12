@@ -1,63 +1,51 @@
-# Eraa-ExamSystem-plus-2-Exceptions
+# 📝 Console Exam System (C# .NET 9)
 
-This project is a console-based Examination System written in C#. It allows teachers to define exams consisting of different question types and lets students take and get graded on the exam.
+A console-based examination system built in C# using .NET 9. Supports two question types and includes exam timing, grading, and midpoint progress notification.
 
 ---
 
 ## 📌 Features
 
-- Object-oriented design with inheritance and polymorphism
-- Supports three question types:
-  - ✅ True/False
-  - 🔘 Choose One
-  - 📋 Choose All That Apply
-- Questions and Answers are associated and evaluated
-- Logs all added questions to a file
-- Uses enums for exam mode (`Starting`, `Finished`)
-- Implements `ICloneable`, `IComparable`, and overrides:
-  - `ToString()`
-  - `Equals()`
-  - `GetHashCode()`
-- Custom student notification system using delegates and events
+- ✅ Two question types:
+  - True/False
+  - Multiple Choice (Choose All Correct Answers)
+- 🧠 Create custom questions with:
+  - Header
+  - Marks
+  - Correct answer(s)
+- 🚫 Prevent duplicate options in MCQs
+- 🕒 Set total exam duration (in minutes)
+- ⏳ Midpoint time warning during exam
+- 🔐 Answer validation & scoring
+- 🧮 Auto calculates total marks and grade
+- ⏱️ Displays time spent after exam completion
+- 🔔 Notifies all students when exam starts
+- 🔄 Clean OOP structure with inheritance and events
 
 ---
 
-## 🚀 How to Run
+## 🚀 How It Works
 
-1. **Open the project in Visual Studio or Visual Studio Code.**
-2. **Ensure all `.cs` files are included in the project.**
-3. **Build and run the application.**
-4. On execution, the program will:
-   - Ask how many questions you want.
-   - Add different types of questions automatically.
-   - Start the exam.
-   - Notify all registered students.
-   - Accept student answers and calculate the grade.
-
----
-
-## 📖 Key Concepts Used
-
-- **Abstract Classes & Inheritance**
-- **Interfaces (`ICloneable`, `IComparable`)**
-- **Array-based collections (not using `List<T>`)**
-- **Event Handling & Delegates**
-- **File Logging**
-- **XML Documentation Comments**
-- **Exam Correction with a `Dictionary<Question, Answer>`**
+1. App asks how many questions to create
+2. For each question:
+   - Select type (True/False or MCQ)
+   - Enter header
+   - Enter mark
+   - Enter correct answer(s)
+3. Choose to start the exam or exit
+4. Provide exam time limit
+5. Exam begins:
+   - Questions shown one by one
+   - User enters answers
+   - Midpoint message shown halfway through the exam
+6. Final results are displayed:
+   - Grade
+   - Total marks
+   - Time spent
 
 ---
 
-## 🔧 Customization Ideas
+## 🛠 Tech Stack
 
-- Add more question types.
-- Save exam results to a CSV or database.
-- Implement timers.
-- Build a GUI version using WinForms or WPF.
-- Allow dynamic question creation instead of hardcoded ones.
-
----
-
-## 📄 License
-
-This project is provided for educational purposes. Free to use and modify.
+- .NET 9
+- C# Console Application

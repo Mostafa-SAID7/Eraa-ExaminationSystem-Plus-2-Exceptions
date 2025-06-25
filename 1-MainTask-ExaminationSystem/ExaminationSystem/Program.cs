@@ -1,4 +1,4 @@
-// Program.cs
+﻿// Program.cs
 using System;
 
 class Program
@@ -41,21 +41,15 @@ class Program
             return;
         }
 
-        TimeSpan duration;
-        while (true)
-        {
-            Console.WriteLine("Enter exam duration in format HH:MM:SS (e.g., 1:00:00 for 1 hour):");
-            string input = Console.ReadLine();
-            if (TimeSpan.TryParse(input, out duration))
-                break;
-            Console.WriteLine("Invalid time format. Please try again.");
-        }
-
+        Console.WriteLine("Enter exam duration in minutes:");
+        int durationMinutes = int.Parse(Console.ReadLine());
         DateTime startTime = DateTime.Now;
-        DateTime endTime = startTime.Add(duration);
+        DateTime endTime = startTime.AddMinutes(durationMinutes);
         bool midpointNotified = false;
 
         Exam exam = new FinalExam(startTime, questionList.Length);
+        exam.Mode = ExamMode.Starting;
+        exam.NotifyStudents();
 
         Console.WriteLine("\n--- Exam Started ---");
 
@@ -64,16 +58,16 @@ class Program
             DateTime now = DateTime.Now;
 
             // Midpoint notification
-            double elapsedSeconds = (now - startTime).TotalSeconds;
-            if (!midpointNotified && elapsedSeconds >= duration.TotalSeconds / 2.0)
+            double elapsedMinutes = (now - startTime).TotalMinutes;
+            if (!midpointNotified && elapsedMinutes >= durationMinutes / 2.0)
             {
                 midpointNotified = true;
-                Console.WriteLine("\nYou are halfway through the exam.\n");
+                Console.WriteLine("\n⏳ You're halfway through the exam!\n");
             }
 
             if (now > endTime)
             {
-                Console.WriteLine("\nTime is up! Exam finished.");
+                Console.WriteLine("\n⏰ Time is up! Exam finished.");
                 break;
             }
 
@@ -87,11 +81,11 @@ class Program
             if (isCorrect)
             {
                 exam.Grade += q.Marks;
-                Console.WriteLine($"===== Correct! You earned {q.Marks} marks.=====");
+                Console.WriteLine($"✅ Correct! You earned {q.Marks} marks.");
             }
             else
             {
-                Console.WriteLine("===== Incorrect. You earned 0 marks.=====");
+                Console.WriteLine("❌ Incorrect. You earned 0 marks.");
             }
 
             exam.MarkOfExam += q.Marks;
@@ -99,9 +93,8 @@ class Program
 
         exam.Mode = ExamMode.Finished;
         TimeSpan totalTimeTaken = DateTime.Now - startTime;
-
-        Console.WriteLine($"\n===== Your final grade: {exam.Grade} out of {exam.MarkOfExam} =====");
-        Console.WriteLine($"===== Exam time is: {duration.Hours} h {duration.Minutes} m {duration.Seconds} s =====");
-        Console.WriteLine($"===== Time spent to finish the exam: {totalTimeTaken.Hours} h {totalTimeTaken.Minutes} m {totalTimeTaken.Seconds} s =====");
+        Console.WriteLine($"\n📝 Your final grade: {exam.Grade} out of {exam.MarkOfExam}");
+        Console.WriteLine($"⏱️ Time spent to finish the exam: {totalTimeTaken.Minutes} minute(s) and {totalTimeTaken.Seconds} second(s)");
     }
 }
+    
